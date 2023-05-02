@@ -1,0 +1,69 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis
+
+  creator:
+    build:
+      context: \creator
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+
+  manager:
+    build:
+      context: \manager
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+
+  worker_sum:
+    build:
+      context: \workers\sum
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+
+  worker_chat:
+    build:
+      context: \workers\chat
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+
+  worker_conversation:
+    build:
+      context: \workers\conversation
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+      
+  worker_sequence:
+    build:
+      context: \workers\sequence
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis

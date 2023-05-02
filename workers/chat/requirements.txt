@@ -1,0 +1,3 @@
+redis==5.0.0b2
+openai==0.27.6
+requests==2.29.0
