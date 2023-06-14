@@ -1,6 +1,7 @@
 # Tasker
 
-Tasker is a simple task management system built using Python and Redis. It allows you to create tasks, manage them, and assign workers to complete them. This README will provide a brief overview of the project, how to use it, and how to deploy it.
+A task runner service that expose a REST API to run various tasks.
+A simple task management system built using Python and Redis. It allows you to create tasks, manage them, and assign workers to complete them. This README will provide a brief overview of the project, how to use it, and how to deploy it.
 
 
 
@@ -29,6 +30,7 @@ Specifically, the project uses Redis to store the following:
 - `sum_task_queue` a task queue for the summation worker to process.
 - `sequence_task_queue` a task queue for the sequence worker to process.
 - `chat_task_queue` a task queue for the chat worker to process.
+- `conversation_task_queue` a task queue for the conversation worker to process.
 - `tasks` a hash map to store the results of the tasks. The task results are stored with their corresponding task IDs.
 
 Redis provides a fast and efficient way to store and retrieve data. It also supports atomic operations, making it a good fit for managing the task queues and results in this project.
